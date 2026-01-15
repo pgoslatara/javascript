@@ -39,7 +39,7 @@ jobs:
         working-directory: "packages/${{ matrix.package }}"
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
       - uses: ljharb/actions/node/install@main
         name: 'nvm install ${{ matrix.node-version }} && npm install'
         with:
@@ -50,7 +50,7 @@ jobs:
       - run: node -pe "require('eslint/package.json').version"
         name: 'eslint version'
       - run: npm run travis
-      - uses: codecov/codecov-action@v2
+      - uses: codecov/codecov-action@v5
 
   react:
     needs: [matrix]
@@ -74,7 +74,7 @@ jobs:
         working-directory: "packages/${{ matrix.package }}"
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
       - uses: ljharb/actions/node/install@main
         name: 'nvm install ${{ matrix.node-version }} && npm install'
         with:
@@ -87,7 +87,7 @@ jobs:
       - run: npm install --no-save "eslint-plugin-react-hooks@${{ matrix.react-hooks }}"
         if: ${{ matrix.react-hooks > 0}}
       - run: npm run travis
-      - uses: codecov/codecov-action@v2
+      - uses: codecov/codecov-action@v5
 
   prepublish-base:
     name: 'prepublish tests (base config)'
@@ -106,7 +106,7 @@ jobs:
         working-directory: "packages/${{ matrix.package }}"
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
       - uses: ljharb/actions/node/install@main
         name: 'nvm install lts/* && npm install'
         with:
@@ -139,7 +139,7 @@ jobs:
         working-directory: "packages/${{ matrix.package }}"
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
       - uses: ljharb/actions/node/install@main
         name: 'nvm install lts/* && npm install'
         with:
